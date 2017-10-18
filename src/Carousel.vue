@@ -58,6 +58,13 @@
     ],
     props: {
       /**
+       * Disable mouse drag events
+       */
+      disableDrag: {
+        type: Boolean,
+        default: false,
+      },
+      /**
        * Slide transition easing
        * Any valid CSS transition easing accepted
        */
@@ -392,6 +399,9 @@
        */
       /* istanbul ignore next */
       handleMousedown(e) {
+        if (this.disableDrag) {
+          return
+        }
         if (!e.touches) { e.preventDefault() }
 
         this.mousedown = true
